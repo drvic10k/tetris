@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tetris</title>
+    <link href="contents/bootstrap.css" rel="stylesheet" />
+    <script src="scripts/jquery-2.0.3.js"></script>
+    <script src="scripts/knockout-2.3.0.js"></script>
+    <script src="scripts/keymaster.js"></script>
+    <script src="scripts/kinetic-v4.7.2.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/constants.js"></script>
+    <script src="scripts/extension.js"></script>
+    <script src="scripts/models.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="span2"></div>
+            <div class="span8">
+                <div id="playground"></div>
+            </div>
+            <div class="span2">
+                <div class="row">
+                    <input type="text" id="score" data-bind="value: score" readonly="true" />
+                </div>
+                <div class="row">
+                    <button class="btn " id="start" onclick="StartGame()">Start game</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        models.canvas.create("playground");
+
+        StartGame = function () {
+            
+            models.session.create();
+            try{
+                ko.applyBindings(models.session.score);
+            }
+            catch (e)
+            { }
+
+        }
+
+    </script>
+</body>
+</html>
